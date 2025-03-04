@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import CardLoading from '../components/CardLoading'
-import SummaryApi from '../common/SummaryApi'
-import Axios from '../utils/Axios'
-import AxiosToastError from '../utils/AxiosToastError'
-import CardProduct from '../components/CardProduct'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { useLocation } from 'react-router-dom'
 import noDataImage from '../assets/nothing here yet.webp'
+import SummaryApi from '../common/SummaryApi'
+import CardLoading from '../components/CardLoading'
+import CardProduct from '../components/CardProduct'
+import Axios from '../utils/Axios'
+import AxiosToastError from '../utils/AxiosToastError'
 
 const SearchPage = () => {
   const [data,setData] = useState([])
@@ -82,7 +82,7 @@ const SearchPage = () => {
                 })
               }
 
-            {/***loading data */}
+            {/*loading data */}
             {
               loading && (
                 loadingArrayCard.map((_,index)=>{

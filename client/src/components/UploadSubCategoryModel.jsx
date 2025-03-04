@@ -138,7 +138,9 @@ const UploadSubCategoryModel = ({close, fetchData}) => {
                             {/*display value**/}
                             <div className='flex flex-wrap gap-2'>
                                 {
+                                    
                                     subCategoryData.category.map((cat,index)=>{
+                                        console.log(subCategoryData)
                                         return(
                                             <p key={cat._id+"selectedValue"} className='bg-white shadow-md px-1 m-1 flex items-center gap-2'>
                                                 {cat.name}

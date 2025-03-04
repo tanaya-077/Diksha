@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { FaArrowLeft } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { TypeAnimation } from 'react-type-animation';
-import { FaArrowLeft } from "react-icons/fa";
 import useMobile from '../hooks/useMobile';
 
 
@@ -12,7 +12,7 @@ const Search = () => {
     const [isSearchPage,setIsSearchPage] = useState(false)
     const [ isMobile ] = useMobile()
     const params = useLocation()
-    const searchText = params.search.slice(3)
+    const searchText = params.search ? params.search.slice(3) : ''
 
     useEffect(()=>{
         const isSearch = location.pathname === "/search"
@@ -52,24 +52,24 @@ const Search = () => {
                      <div onClick={redirectToSearchPage} className='w-full h-full flex items-center'>
                         <TypeAnimation
                                 sequence={[
-                                    // Same substring at the start will only be typed out once, initially
-                                    'Search "milk"',
+                                    // Same substring at the s]tart will only be typed out once, initially
+                                    'Search ""',
                                     1000, // wait 1s before replacing "Mice" with "Hamsters"
-                                    'Search "bread"',
+                                    'Search "HAIR CARE"',
                                     1000,
-                                    'Search "sugar"',
+                                    'Search "FACE CARE"',
                                     1000,
-                                    'Search "panner"',
+                                    'Search "BODY CARE"',
                                     1000,
-                                    'Search "chocolate"',
+                                    'Search "HANDMADE & HOMEMADE SOAPS "',
                                     1000,
-                                    'Search "curd"',
+                                    'Search "LIP CARE"',
                                     1000,
-                                    'Search "rice"',
+                                    'Search ""',
                                     1000,
-                                    'Search "egg"',
+                                    'Search ""',
                                     1000,
-                                    'Search "chips"',
+                                    'Search ""',
                                 ]}
                                 wrapper="span"
                                 speed={50}
@@ -81,7 +81,7 @@ const Search = () => {
                     <div className='w-full h-full'>
                         <input
                             type='text'
-                            placeholder='Search for atta dal and more.'
+                            placeholder='Search for  and more.'
                             autoFocus
                             defaultValue={searchText}
                             className='bg-transparent w-full h-full outline-none'

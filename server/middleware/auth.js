@@ -1,35 +1,57 @@
 import jwt from 'jsonwebtoken'
 
-const auth = async(request,response,next)=>{
+const auth = async(request, response, next) => {
     try {
-        const token = request.cookies.accessToken || request?.headers?.authorization?.split(" ")[1]
-       
-        if(!token){
+        console.log('Auth middleware starting');
+        
+        // First check Authorization header which is set by the axios interceptor
+        const authHeader = request.headers.authorization;
+        console.log('Authorization header:', authHeader || 'Not provided');
+        
+        // Initialize token
+        let token = null;
+        
+        // Extract token from Authorization header if available
+        if (authHeader && authHeader.startsWith('Bearer ')) {
+            token = authHeader.split(' ')[1];
+            console.log('Using token from Authorization header');
+        }
+        
+        // Fallback to cookie if no token in header
+        if (!token) {
+            token = request.cookies.accessToken;
+            console.log('Token from cookies:', token ? 'Found' : 'Not found');
+        }
+        
+        if (!token) {
+            console.log('No token found in request');
             return response.status(401).json({
-                message : "Provide token"
-            })
+                success: false,
+                message: "Authentication required. Please login."
+            });
         }
 
-        const decode = await jwt.verify(token,process.env.SECRET_KEY_ACCESS_TOKEN)
-
-        if(!decode){
+        try {
+            console.log('Verifying token...');
+            const decoded = await jwt.verify(token, process.env.SECRET_KEY_ACCESS_TOKEN);
+            console.log('Token verified, user ID:', decoded.id);
+            request.userId = decoded.id;
+            next();
+        } catch (tokenError) {
+            console.error('Token verification failed:', tokenError);
             return response.status(401).json({
-                message : "unauthorized access",
-                error : true,
-                success : false
-            })
+                success: false,
+                message: "Invalid or expired token. Please login again.",
+                error: true
+            });
         }
-
-        request.userId = decode.id
-
-        next()
-
     } catch (error) {
+        console.error('Auth middleware error:', error);
         return response.status(500).json({
-            message : "You have not login",///error.message || error,
-            error : true,
-            success : false
-        })
+            success: false,
+            message: "Authentication failed. Please try again.",
+            error: true
+        });
     }
 }
 

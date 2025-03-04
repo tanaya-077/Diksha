@@ -1,10 +1,11 @@
 import React from 'react'
-import banner from '../assets/banner.jpg'
-import bannerMobile from '../assets/banner-mobile.jpg'
 import { useSelector } from 'react-redux'
-import { valideURLConvert } from '../utils/valideURLConvert'
-import {Link, useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import bannerMobile from '../assets/banner-mobile2.jpg'
+import banner from '../assets/banner.png'
 import CategoryWiseProductDisplay from '../components/CategoryWiseProductDisplay'
+import { valideURLConvert } from '../utils/valideURLConvert'
+import Reviews from '../components/Reviews'
 
 const Home = () => {
   const loadingCategory = useSelector(state => state.product.loadingCategory)
@@ -87,7 +88,8 @@ const Home = () => {
         })
       }
 
-
+      {/* Customer Reviews Section */}
+      <Reviews />
 
    </section>
   )

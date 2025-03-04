@@ -1,16 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa6"
 import { useParams } from 'react-router-dom'
+import image2 from '../assets/Best_Prices_Offers.png'
+import image1 from '../assets/minute_delivery.png'
+import image3 from '../assets/Wide_Assortment1.png'
 import SummaryApi from '../common/SummaryApi'
+import AddToCartButton from '../components/AddToCartButton'
+import Divider from '../components/Divider'
 import Axios from '../utils/Axios'
 import AxiosToastError from '../utils/AxiosToastError'
-import { FaAngleRight,FaAngleLeft } from "react-icons/fa6";
 import { DisplayPriceInRupees } from '../utils/DisplayPriceInRupees'
-import Divider from '../components/Divider'
-import image1 from '../assets/minute_delivery.png'
-import image2 from '../assets/Best_Prices_Offers.png'
-import image3 from '../assets/Wide_Assortment.png'
 import { pricewithDiscount } from '../utils/PriceWithDiscount'
-import AddToCartButton from '../components/AddToCartButton'
 
 const ProductDisplayPage = () => {
   const params = useParams()
@@ -164,7 +164,7 @@ const ProductDisplayPage = () => {
               }
            
 
-            <h2 className='font-semibold'>Why shop from binkeyit? </h2>
+            <h2 className='font-semibold'>Why shop from HIS AND HER ESSENTIALS ? </h2>
             <div>
                   <div className='flex  items-center gap-4 my-4'>
                       <img
@@ -174,7 +174,7 @@ const ProductDisplayPage = () => {
                       />
                       <div className='text-sm'>
                         <div className='font-semibold'>Superfast Delivery</div>
-                        <p>Get your orer delivered to your doorstep at the earliest from dark stores near you.</p>
+                        <p>"Superfast delivery, straight to your doorstep!"</p>
                       </div>
                   </div>
                   <div className='flex  items-center gap-4 my-4'>
@@ -185,7 +185,7 @@ const ProductDisplayPage = () => {
                       />
                       <div className='text-sm'>
                         <div className='font-semibold'>Best Prices & Offers</div>
-                        <p>Best price destination with offers directly from the nanufacturers.</p>
+                        <p>"Your ultimate destination for the best prices and exclusive offers—direct from us!"</p>
                       </div>
                   </div>
                   <div className='flex  items-center gap-4 my-4'>
@@ -196,7 +196,7 @@ const ProductDisplayPage = () => {
                       />
                       <div className='text-sm'>
                         <div className='font-semibold'>Wide Assortment</div>
-                        <p>Choose from 5000+ products across food personal care, household & other categories.</p>
+                        <p>Choose from 100+ products of HAIR CARE ,SKIN CARE, BODY CARE </p>
                       </div>
                   </div>
             </div>
